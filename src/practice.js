@@ -6,16 +6,16 @@ if (WEBGL.isWebGLAvailable()) {
 
   // 장면
   const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x004fff);
+  scene.background = new THREE.Color(0x004fff);
 
   // 카메라
-  const camera = new THREE.PerspectiveCamera(75, window.innerHeight / window.innerWidth, 0.1, 1000); 
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); 
   // 화각, 가까운, 먼 등의 속성을 넣을 수 있음
   camera.position.z = 3;
 
   // 렌더러
   const renderer = new THREE.WebGLRenderer({ alpha: true, antialias : true });
-  renderer.setSize(window.innerHeight, window.innerWidth);
+  renderer.setSize(window.innerWidth, window.innerHeight);
 
   // 렌터러를 어느 태그에 노출 시킬지
   document.body.appendChild(renderer.domElement);
@@ -51,6 +51,14 @@ if (WEBGL.isWebGLAvailable()) {
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
+
+  // 반응형 처리
+  function onWindowResize() {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+  }
+  window.addEventListener('resize', onWindowResize);
 
 } else {
   var warning = WEBGL.getWebGLErrorMessage();
