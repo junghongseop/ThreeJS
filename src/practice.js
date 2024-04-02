@@ -6,7 +6,7 @@ if (WEBGL.isWebGLAvailable()) {
 
   // 장면
   const scene = new THREE.Scene();
-  scene.background = new THREE.Color(0x004fff);
+    scene.background = new THREE.Color(0x004fff);
 
   // 카메라
   const camera = new THREE.PerspectiveCamera(75, window.innerHeight / window.innerWidth, 0.1, 1000); 
@@ -14,7 +14,7 @@ if (WEBGL.isWebGLAvailable()) {
   camera.position.z = 3;
 
   // 렌더러
-  const renderer = new THREE.WebGLRenderer();
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias : true });
   renderer.setSize(window.innerHeight, window.innerWidth);
 
   // 렌터러를 어느 태그에 노출 시킬지
