@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   mode: 'production',
-  entry: './src/ex01.js',  // 실행 시킬 코드 파일이 맞는 지 확인하기
+  entry: './src/practice.js',  // 실행 시킬 코드 파일이 맞는 지 확인하기
   output: {
     path: path.resolve(__dirname, 'public'),
     filename: 'bundle.js',
