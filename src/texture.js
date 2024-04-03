@@ -48,27 +48,47 @@ if (WEBGL.isWebGLAvailable()) {
     color: 0xFF7F00,
     // 메탈 느낌을 줄지 말지
     // 0에 가까워 질 수록 메탈 느낌, 1에 가까워 질 수록 나무 느낌
-    metalness: 0.5,
+    metalness: 0.9,
+    // 거칠기
+    roughness: 0.5,
     // 형태를 보여 줄 지 설정
     transparent: true,
     // 투명도 설정
-    opacity: 0.1,
+    opacity: 0.5,
+    // wireframe: true,
   });
+  // 변수로 지정해서 추가해도 정상 작동함
+
   const obj02 = new THREE.Mesh(geometry, material02);
   obj02.position.x = -1;
   scene.add(obj02);
 
-  const material03 = new THREE.MeshNormalMaterial({color: 0xFF7F00,});
+  // 깊이감이 있는 도형을 만들때 사용
+  // const material03 = new THREE.MeshDepthMaterial({color: 0xFF7F00,});
+
+  const material03 = new THREE.MeshPhysicalMaterial({
+    color: 0xFF7F00,
+    // 연한 막이 생긴 듯한 느낌을 줌
+    clearcoat: 10,
+    // clearcoat에 거칠기를 더함
+    clearcoatRoughness: 0.5,
+  });
   const obj03 = new THREE.Mesh(geometry, material03);
   obj03.position.x = 0;
   scene.add(obj03);
 
-  const material04 = new THREE.MeshBasicMaterial({color: 0xFF7F00,});
+  const material04 = new THREE.MeshLambertMaterial({color: 0xFF7F00,});
   const obj04 = new THREE.Mesh(geometry, material04);
   obj04.position.x = 1;
   scene.add(obj04);
 
-  const material05 = new THREE.MeshBasicMaterial({color: 0xFF7F00,});
+  const material05 = new THREE.MeshPhongMaterial({
+    color: 0xFF7F00,
+    // 빛을 얼마나 줄지
+    shininess: 60,
+    // 빛에 어떤 색상을 줄지
+    specular: 0x004fff
+  });
   const obj05 = new THREE.Mesh(geometry, material05);
   obj05.position.x = 2;
   scene.add(obj05);
