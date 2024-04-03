@@ -44,7 +44,16 @@ if (WEBGL.isWebGLAvailable()) {
   obj01.position.x = -2;
   scene.add(obj01);
 
-  const material02 = new THREE.MeshStandardMaterial({color: 0xFF7F00,});
+  const material02 = new THREE.MeshStandardMaterial({
+    color: 0xFF7F00,
+    // 메탈 느낌을 줄지 말지
+    // 0에 가까워 질 수록 메탈 느낌, 1에 가까워 질 수록 나무 느낌
+    metalness: 0.5,
+    // 형태를 보여 줄 지 설정
+    transparent: true,
+    // 투명도 설정
+    opacity: 0.1,
+  });
   const obj02 = new THREE.Mesh(geometry, material02);
   obj02.position.x = -1;
   scene.add(obj02);
