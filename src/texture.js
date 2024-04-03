@@ -77,7 +77,7 @@ if (WEBGL.isWebGLAvailable()) {
   obj03.position.x = 0;
   scene.add(obj03);
 
-  const material04 = new THREE.MeshLambertMaterial({color: 0xFF7F00,});
+  const material04 = new THREE.MeshNormalMaterial({color: 0xFF7F00,});
   const obj04 = new THREE.Mesh(geometry, material04);
   obj04.position.x = 1;
   scene.add(obj04);
